@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">CookItUp</string>
+    <string name="title_home">Home</string>
+    <string name="title_search">Search</string>
+    <string name="title_add">Add</string>
+    <string name="search">Search</string>
+    <string name="searchHint">Find something new!</string>
+    <string name="recipeImagePlaceholder">--recipe image--</string>
+</resources>
