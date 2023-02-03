@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/recipeAddLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="false"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/recipe_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="@string/recipe_written_title"
+            android:inputType="text"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@id/image_picker_label"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/image_picker_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:labelFor="@id/image_picker"
+            android:text="@string/recipe_written_image"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@id/image_picker"
+            app:layout_constraintTop_toBottomOf="@id/recipe_title" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/image_picker"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/border_dashed"
+            android:contentDescription="@string/iconPlaceholder"
+            app:backgroundTint="@color/cardview_light_background"
+            app:icon="@drawable/ic_baseline_image_search_24"
+            app:iconGravity="textStart"
+            app:iconSize="35dp"
+            app:iconTint="@color/black"
+            app:layout_constraintBottom_toTopOf="@id/label_ingredient_list"
+            app:layout_constraintDimensionRatio="1:0.5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image_picker_label"
+            app:layout_constraintWidth_percent=".923" />
+
+        <ImageView
+            android:id="@+id/show_picked_image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/label_ingredient_list"
+            app:layout_constraintDimensionRatio="1:0.5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image_picker_label"
+            app:layout_constraintWidth_percent=".923" />
+
+        <TextView
+            android:id="@+id/label_ingredient_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:labelFor="@id/interactable"
+            android:text="@string/recipe_written_ingredients"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@id/interactable"
+            app:layout_constraintTop_toBottomOf="@id/show_picked_image" />
+
+        <LinearLayout
+            android:id="@+id/interactable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/label_ingredient_list">
+
+            <EditText
+                android:id="@+id/recipe_ingredient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                app:layout_constraintEnd_toStartOf="@id/btn_add_ingredient"
+                app:layout_constraintHorizontal_bias="0.504"
+                app:layout_constraintStart_toStartOf="@id/interactable"
+                app:layout_constraintTop_toTopOf="@id/interactable" />
+
+            <ImageButton
+                android:id="@+id/btn_add_ingredient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/ic_baseline_add_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/recipe_ingredient"
+                app:layout_constraintTop_toTopOf="@id/interactable"
+                tools:layout_editor_absoluteY="0dp" />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recipe_ingredients"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="4dp"
+            android:textSize="20sp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@+id/interactable"
+            app:spanCount="1"
+            tools:layout_editor_absoluteX="16dp" />
+
+        <EditText
+            android:id="@+id/recipe_instructions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="@string/recipe_written_instructions"
+            android:textSize="16sp"
+            android:lines="4"
+            android:scrollbars="vertical"
+            android:inputType="textMultiLine"
+            app:layout_constraintBottom_toTopOf="@+id/recipe_mealType"
+            app:layout_constraintTop_toBottomOf="@+id/recipe_ingredients" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/recipe_mealType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@id/fab"
+            app:layout_constraintTop_toBottomOf="@id/recipe_instructions">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_breakfast"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/chip_breakfast" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_brunch"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/chip_brunch" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_lunch"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/chip_lunch" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_teatime"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/chip_teatime" />
+        </com.google.android.material.chip.ChipGroup>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_gravity="end|bottom"
+            android:src="@drawable/ic_baseline_add_24"
+            app:fabSize="mini"
+            android:text="@string/fab_add"
+            app:layout_constraintTop_toBottomOf="@id/recipe_mealType"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+
