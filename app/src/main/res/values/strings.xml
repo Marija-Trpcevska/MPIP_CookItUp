@@ -6,4 +6,32 @@
     <string name="search">Search</string>
     <string name="searchHint">Find something new!</string>
     <string name="recipeImagePlaceholder">--recipe image--</string>
+    <string name="add_fragment_options_present">Do you want to..</string>
+    <string name="text_options_write">..create your own recipe?</string>
+    <string name="create_btn">Create</string>
+    <string name="text_options_camera">..or take a photo of one?</string>
+    <string name="take_btn">Open camera</string>
+    <string name="iconPlaceholder">[icon]</string>
+    <string name="btn_save">Save</string>
+    <string name="written_dialog_title">Create a recipe</string>
+    <string name="fullscreen_dialog_save">Save</string>
+    <string name="recipe_written_title">Title</string>
+    <string name="recipe_written_image">Choose an image:</string>
+    <string name="recipe_written_ingredients">Add ingredients:</string>
+    <string name="recipe_written_instructions">Instructions</string>
+    <string name="recipe_written_mealtype">Choose category:</string>
+    <string name="cancel">Cancel</string>
+    <string name="title_written">Create your recipe</string>
+    <string name="title_camera">Upload your recipe</string>
+    <string name="chip_breakfast">breakfast</string>
+    <string name="chip_brunch">brunch</string>
+    <string name="chip_lunch">lunch/dinner</string>
+    <string name="chip_teatime">teatime</string>
+    <string name="fab_add">Add</string>
+    <string name="recipe_photo_notes">Notes</string>
+    <string name="source">Source:</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="chip_snack">snack</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -4,14 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.findNavController
+import finki.ukim.mk.cookitup.R
 import finki.ukim.mk.cookitup.databinding.FragmentAddBinding
 
 class AddFragment : Fragment() {
 
     private var _binding: FragmentAddBinding? = null
+    private val addViewModel: AddViewModel by activityViewModels()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -22,17 +24,19 @@ class AddFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val addViewModel =
-            ViewModelProvider(this)[AddViewModel::class.java]
-
         _binding = FragmentAddBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-        val textView: TextView = binding.textAdd
-        addViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.writeButton.setOnClickListener{
+            it.findNavController().navigate(R.id.from_add_to_written)
+        }
+        binding.cameraButton.setOnClickListener{
+            it.findNavController().navigate(R.id.from_add_to_camera)
+        }
     }
 
     override fun onDestroyView() {

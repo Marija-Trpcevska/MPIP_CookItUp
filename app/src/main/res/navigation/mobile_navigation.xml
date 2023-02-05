@@ -21,5 +21,34 @@
         android:id="@+id/navigation_add"
         android:name="finki.ukim.mk.cookitup.ui.add.AddFragment"
         android:label="@string/title_add"
-        tools:layout="@layout/fragment_add" />
+        tools:layout="@layout/fragment_add">
+        <action
+            android:id="@+id/from_add_to_written"
+            app:destination="@id/navigation_written"/>
+        <action
+            android:id="@+id/from_add_to_camera"
+            app:destination="@id/navigation_camera"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_written"
+        android:name="finki.ukim.mk.cookitup.ui.add.AddWrittenFragment"
+        android:label="@string/title_written"
+        tools:layout="@layout/fragment_written_add"
+        >
+        <action
+            android:id="@+id/action_navigation_written_to_navigation_add"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popUpTo="@id/navigation_add"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_camera"
+        android:name="finki.ukim.mk.cookitup.ui.add.AddCameraFragment"
+        android:label="@string/title_camera"
+        tools:layout="@layout/fragment_camera_add"
+        />
 </navigation>

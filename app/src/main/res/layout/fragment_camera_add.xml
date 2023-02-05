@@ -77,52 +77,69 @@
             android:layout_marginEnd="16dp"
             android:hint="@string/recipe_photo_notes"
             app:layout_constraintTop_toBottomOf="@id/camera_taker"
-            app:layout_constraintBottom_toTopOf="@id/recipe_mealType_2"
+            app:layout_constraintBottom_toTopOf="@id/chip_scroll_camera"
             android:inputType="textMultiLine" />
 
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/recipe_mealType_2"
+        <HorizontalScrollView
+            android:id="@+id/chip_scroll_camera"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
             app:layout_constraintBottom_toTopOf="@id/photo_fab"
-            app:layout_constraintTop_toBottomOf="@id/photo_notes">
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_breakfast_2"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
-                android:layout_width="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/photo_notes"
+            >
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/recipe_mealType_2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checked="false"
-                android:text="@string/chip_breakfast" />
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp">
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_brunch_2"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="false"
-                android:text="@string/chip_brunch" />
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_breakfast_2"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="@string/chip_breakfast" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_lunch_2"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="false"
-                android:text="@string/chip_lunch" />
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_brunch_2"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="@string/chip_brunch" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_teatime_2"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="false"
-                android:text="@string/chip_teatime" />
-        </com.google.android.material.chip.ChipGroup>
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_lunch_2"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="@string/chip_lunch" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_snack_2"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/chip_snack"
+                    android:textSize="13sp"
+                    />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_teatime_2"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="@string/chip_teatime" />
+            </com.google.android.material.chip.ChipGroup>
+        </HorizontalScrollView>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/photo_fab"
@@ -133,7 +150,7 @@
             android:src="@drawable/ic_baseline_add_24"
             app:fabSize="mini"
             android:text="@string/fab_add"
-            app:layout_constraintTop_toBottomOf="@id/recipe_mealType_2"
+            app:layout_constraintTop_toBottomOf="@id/chip_scroll_camera"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 

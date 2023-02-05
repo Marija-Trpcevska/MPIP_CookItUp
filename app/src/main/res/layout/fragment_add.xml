@@ -4,20 +4,115 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center_vertical"
     tools:context=".ui.add.AddFragment">
 
-    <TextView
-        android:id="@+id/text_add"
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/text_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="25dp"
+        app:constraint_referenced_ids="text_options_present"
+        app:layout_constraintBottom_toTopOf="@id/write_group"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/text_options_present"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_fragment_options_present"
         android:textAlignment="center"
         android:textSize="20sp"
+        app:layout_constraintTop_toTopOf="@id/text_group"
+        app:layout_constraintBottom_toBottomOf="@id/text_group"/>
+
+    <androidx.constraintlayout.widget.Group
+        android:layout_marginVertical="25dp"
+        android:id="@+id/write_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="write_text,write_image,write_button"
+        app:layout_constraintBottom_toTopOf="@id/camera_group"
+        app:layout_constraintTop_toBottomOf="@id/text_group" />
+
+    <TextView
+        android:id="@+id/write_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/text_options_write"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintTop_toTopOf="@id/write_group"
+        app:layout_constraintBottom_toTopOf="@id/write_image"/>
+
+    <ImageView
+        android:id="@+id/write_image"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@string/iconPlaceholder"
+        android:src="@drawable/ic_history_edu"
+        app:layout_constraintDimensionRatio="1.5:0.5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/write_text"
+        app:layout_constraintBottom_toTopOf="@id/write_button"
+        app:layout_constraintWidth_percent=".4" />
+
+    <Button
+        android:id="@+id/write_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/create_btn"
+        app:layout_constraintEnd_toEndOf="@id/camera_group"
+        app:layout_constraintStart_toStartOf="@id/camera_group"
+        app:layout_constraintTop_toBottomOf="@id/write_image"
+        app:layout_constraintBottom_toBottomOf="@id/write_group"/>
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/camera_group"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="85dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="camera_text,camera_image,camera_button"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/write_group" />
+
+    <TextView
+        android:id="@+id/camera_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:gravity="center"
+        android:text="@string/text_options_camera"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/camera_image"
+        app:layout_constraintTop_toTopOf="@id/camera_group" />
+
+    <ImageView
+        android:id="@+id/camera_image"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@string/iconPlaceholder"
+        android:src="@drawable/ic_baseline_camera_alt_24"
+        app:layout_constraintDimensionRatio="1.5:0.5"
+        app:layout_constraintEnd_toEndOf="@id/camera_group"
+        app:layout_constraintStart_toStartOf="@id/camera_group"
+        app:layout_constraintTop_toBottomOf="@id/camera_text"
+        app:layout_constraintBottom_toTopOf="@id/camera_button"
+        app:layout_constraintWidth_percent=".4" />
+
+    <Button
+        android:id="@+id/camera_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/take_btn"
+        app:layout_constraintEnd_toEndOf="@id/camera_group"
+        app:layout_constraintStart_toStartOf="@id/camera_group"
+        app:layout_constraintTop_toBottomOf="@id/camera_image"
+        app:layout_constraintBottom_toBottomOf="@id/camera_group"
         />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
