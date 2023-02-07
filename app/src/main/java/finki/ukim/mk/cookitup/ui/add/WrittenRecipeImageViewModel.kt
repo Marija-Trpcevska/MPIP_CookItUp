@@ -2,13 +2,11 @@ package finki.ukim.mk.cookitup.ui.add
 
 import android.app.Application
 import android.content.Context
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
-import androidx.compose.ui.graphics.ImageBitmap
-import androidx.compose.ui.graphics.asImageBitmap
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -17,7 +15,7 @@ import java.io.InputStream
 
 class WrittenRecipeImageViewModel(application: Application) : AndroidViewModel(application) {
     data class ViewState(
-        val imageBitmap: ImageBitmap? = null,
+        val imageBitmap: Bitmap? = null,
     )
 
     private val _viewState = MutableStateFlow(ViewState())
@@ -27,7 +25,7 @@ class WrittenRecipeImageViewModel(application: Application) : AndroidViewModel(a
         viewModelScope.launch {
             getContext().contentResolver.openInputStream(uri)?.use { inputStream: InputStream ->
                 _viewState.update { currentState: ViewState ->
-                    currentState.copy(imageBitmap = BitmapFactory.decodeStream(inputStream).asImageBitmap())
+                    currentState.copy(imageBitmap = BitmapFactory.decodeStream(inputStream))
                 }
             }
         }

@@ -28,7 +28,7 @@ class IngredientsAdapter(private val data: ArrayList<String> = ArrayList() ):Rec
         val view = LayoutInflater.from(parent.context).inflate(R.layout.ingredient_item_view,parent,false)
         val holder = IngredientsAdapter.IngredientViewHolder(view)
         holder.itemView.findViewById<ImageButton>(R.id.ingredient_btn_delete).setOnClickListener {
-            removeItemFromAdapter(holder.adapterPosition)
+            removeItemFromAdapter(holder.absoluteAdapterPosition)
         }
         return holder
     }
@@ -43,14 +43,12 @@ class IngredientsAdapter(private val data: ArrayList<String> = ArrayList() ):Rec
     }
 
     fun addItemToAdapter(ingredient: String) {
-        if (ingredient!=null) {
-            this.data.add(ingredient)
-        }
-        notifyDataSetChanged()
+        this.data.add(ingredient)
+        notifyItemInserted(data.indexOf(ingredient))
     }
      fun removeItemFromAdapter(position: Int){
          this.data.removeAt(position)
-         notifyDataSetChanged()
+         notifyItemRemoved(position)
      }
 
     fun getData(): ArrayList<String>{

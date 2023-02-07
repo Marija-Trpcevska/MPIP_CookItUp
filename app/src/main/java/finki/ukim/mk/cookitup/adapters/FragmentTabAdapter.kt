@@ -15,9 +15,9 @@ class FragmentTabAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle)
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
-            0 -> ShowApiFragment()
-            1 -> ShowWrittenFragment()
-            else -> ShowCameraFragment()
+            0 -> ShowWrittenFragment()
+            1 -> ShowCameraFragment()
+            else -> ShowApiFragment()
         }
     }
 }

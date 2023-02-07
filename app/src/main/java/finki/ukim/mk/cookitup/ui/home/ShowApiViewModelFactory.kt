@@ -1,4 +1,4 @@
-package finki.ukim.mk.cookitup.ui.search
+package finki.ukim.mk.cookitup.ui.home
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
@@ -10,13 +10,15 @@ import finki.ukim.mk.cookitup.domain.search.retrofit.RetrofitRecipeDataSource
 import finki.ukim.mk.cookitup.domain.search.room.RoomRecipeApiDataSource
 import finki.ukim.mk.cookitup.helpers.NetworkConnectivity
 
-class SearchViewModelFactory(private val context: Context): ViewModelProvider.Factory {
+class ShowApiViewModelFactory(private val context: Context): ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return modelClass.getConstructor(RecipeApiRepository::class.java)
             .newInstance(
-                RecipeApiRepository(RetrofitRecipeDataSource(RecipeDbApiProvider.getRecipeDbApi()),
+                RecipeApiRepository(
+                    RetrofitRecipeDataSource(RecipeDbApiProvider.getRecipeDbApi()),
                     RoomRecipeApiDataSource(AppDatabase.getDatabase(context).recipeApiDao()),
                     NetworkConnectivity(context)
-                ))
+                )
+            )
     }
 }

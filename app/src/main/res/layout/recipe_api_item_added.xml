@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/card_api"
+    android:id="@+id/card_api_added"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="25dp"
@@ -14,13 +14,13 @@
     app:contentPadding="8dp"
     >
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layout_api"
+        android:id="@+id/layout_api_added"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:animateLayoutChanges="true"
         >
 
-        <ImageView android:id="@+id/recipe_image"
+        <ImageView android:id="@+id/recipe_image_added"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="10dp"
@@ -34,12 +34,12 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
-            android:id="@+id/recipe_title"
+            android:id="@+id/recipe_title_added"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="Recipe Title"
-            app:layout_constraintTop_toBottomOf="@id/recipe_image"
-            app:layout_constraintBottom_toTopOf="@id/recipe_divider"
+            app:layout_constraintTop_toBottomOf="@id/recipe_image_added"
+            app:layout_constraintBottom_toTopOf="@id/recipe_divider_added"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="14dp"
@@ -48,24 +48,24 @@
             />
 
         <View
-            android:id="@+id/recipe_divider"
+            android:id="@+id/recipe_divider_added"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@android:color/darker_gray"
             android:layout_marginStart="14dp"
             android:layout_marginEnd="13dp"
             android:paddingTop="2dp"
-            app:layout_constraintTop_toBottomOf="@id/recipe_title"
-            app:layout_constraintBottom_toTopOf="@id/recipe_ingredient_lines"
+            app:layout_constraintTop_toBottomOf="@id/recipe_title_added"
+            app:layout_constraintBottom_toTopOf="@id/recipe_ingredient_lines_added"
             android:visibility="gone"
             />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recipe_ingredient_lines"
+            android:id="@+id/recipe_ingredient_lines_added"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/recipe_divider"
-            app:layout_constraintBottom_toTopOf="@id/scroll_chip"
+            app:layout_constraintTop_toBottomOf="@id/recipe_divider_added"
+            app:layout_constraintBottom_toTopOf="@id/scroll_chip_added"
             android:layout_marginStart="14dp"
             android:layout_marginEnd="13dp"
             android:paddingTop="2dp"
@@ -75,24 +75,24 @@
             />
 
         <HorizontalScrollView
-            android:id="@+id/scroll_chip"
+            android:id="@+id/scroll_chip_added"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="2dp"
-            app:layout_constraintBottom_toTopOf="@id/recipe_source_layout"
-            app:layout_constraintTop_toBottomOf="@id/recipe_ingredient_lines"
+            app:layout_constraintBottom_toTopOf="@id/recipe_source_layout_added"
+            app:layout_constraintTop_toBottomOf="@id/recipe_ingredient_lines_added"
             android:layout_marginStart="14dp"
             android:layout_marginEnd="13dp"
             android:visibility="gone">
 
             <com.google.android.material.chip.ChipGroup
-                android:id="@+id/recipe_chips_info"
+                android:id="@+id/recipe_chips_info_added"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:singleLine="true">
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_breakfast_3"
+                    android:id="@+id/chip_breakfast_3_added"
                     style="@style/Widget.MaterialComponents.Chip.Filter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -101,7 +101,7 @@
                     android:visibility="gone"/>
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_brunch_3"
+                    android:id="@+id/chip_brunch_3_added"
                     style="@style/Widget.MaterialComponents.Chip.Filter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -110,7 +110,7 @@
                     android:visibility="gone"/>
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_lunch_3"
+                    android:id="@+id/chip_lunch_3_added"
                     style="@style/Widget.MaterialComponents.Chip.Filter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -119,7 +119,7 @@
                     android:visibility="gone"/>
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_snack_3"
+                    android:id="@+id/chip_snack_3_added"
                     style="@style/Widget.MaterialComponents.Chip.Filter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -129,7 +129,7 @@
                     />
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_teatime_3"
+                    android:id="@+id/chip_teatime_3_added"
                     style="@style/Widget.MaterialComponents.Chip.Filter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -141,58 +141,58 @@
         </HorizontalScrollView>
 
         <LinearLayout
-            android:id="@+id/recipe_source_layout"
+            android:id="@+id/recipe_source_layout_added"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginStart="14dp"
             android:layout_marginEnd="13dp"
             android:paddingTop="2dp"
-            app:layout_constraintTop_toBottomOf="@id/scroll_chip"
-            app:layout_constraintBottom_toTopOf="@+id/recipe_source_url_layout"
+            app:layout_constraintTop_toBottomOf="@id/scroll_chip_added"
+            app:layout_constraintBottom_toTopOf="@+id/recipe_source_url_layout_added"
             android:visibility="gone"
             >
 
             <TextView
-                android:id="@+id/recipe_source_label"
+                android:id="@+id/recipe_source_label_added"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/source"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/recipe_source"
+                app:layout_constraintEnd_toStartOf="@id/recipe_source_added"
                 android:layout_marginEnd="4dp"
                 />
 
             <TextView
-                android:id="@+id/recipe_source"
+                android:id="@+id/recipe_source_added"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@id/recipe_source_label"
+                app:layout_constraintStart_toEndOf="@id/recipe_source_label_added"
                 app:layout_constraintEnd_toEndOf="parent"
                 />
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/recipe_source_url_layout"
+            android:id="@+id/recipe_source_url_layout_added"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginStart="14dp"
             android:layout_marginEnd="13dp"
-            app:layout_constraintTop_toBottomOf="@id/recipe_source_layout"
+            app:layout_constraintTop_toBottomOf="@id/recipe_source_layout_added"
             app:layout_constraintBottom_toBottomOf="@id/api_fab"
             android:visibility="gone"
             >
 
             <ImageView
-                android:id="@+id/recipe_url_label"
+                android:id="@+id/recipe_url_label_added"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
                 android:layout_marginEnd="4dp"
                 android:contentDescription="@string/iconPlaceholder"
                 android:src="@drawable/ic_baseline_link_24"
-                app:layout_constraintEnd_toStartOf="@id/recipe_source_url"
+                app:layout_constraintEnd_toStartOf="@id/recipe_source_url_added"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_gravity="top"
@@ -200,10 +200,10 @@
                 />
 
             <TextView
-                android:id="@+id/recipe_source_url"
+                android:id="@+id/recipe_source_url_added"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@id/recipe_url_label"
+                app:layout_constraintStart_toEndOf="@id/recipe_url_label_added"
                 android:layout_weight="1"
                 android:autoLink="web"
                 />
@@ -211,15 +211,15 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:visibility="gone"
-            android:id="@+id/api_fab"
+            android:id="@+id/api_fab_added"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:layout_gravity="end|bottom"
-            android:src="@drawable/ic_baseline_add_24"
+            android:src="@drawable/ic_baseline_delete_outline_24"
             app:fabSize="mini"
             android:text="@string/fab_add"
-            app:layout_constraintTop_toBottomOf="@id/recipe_source_url_layout"
+            app:layout_constraintTop_toBottomOf="@id/recipe_source_url_layout_added"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:contentDescription="@string/iconPlaceholder" />

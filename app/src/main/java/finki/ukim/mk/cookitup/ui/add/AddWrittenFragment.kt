@@ -12,8 +12,6 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.result.launch
 import androidx.annotation.RequiresApi
-import androidx.compose.ui.graphics.asAndroidBitmap
-import androidx.compose.ui.graphics.asImageBitmap
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -39,7 +37,7 @@ class AddWrittenFragment: Fragment() {
     private val singlePhotoPickerLauncher = registerForActivityResult(PickSinglePhotoContract()) { imageUri: Uri? ->
         imageUri?.let(writtenRecipeImageViewModel::setImageUri)
         if(imageUri != null){
-            binding.showPickedImage.setImageBitmap(writtenRecipeImageViewModel.viewState.value.imageBitmap?.asAndroidBitmap())
+            binding.showPickedImage.setImageBitmap(writtenRecipeImageViewModel.viewState.value.imageBitmap)
             binding.showPickedImage.visibility = View.VISIBLE
             binding.imagePicker.apply {
                 icon = null
@@ -106,7 +104,7 @@ class AddWrittenFragment: Fragment() {
             val recipe =
             RecipeWritten(
                 binding.recipeTitle.text.toString(),
-                image.asImageBitmap() ,
+                image ,
                 adapter.getData(),
                 binding.recipeInstructions.text.toString(),
                 binding.recipeMealType.checkedChipIds.map { chip: Int -> binding.recipeMealType.findViewById<Chip>(chip).text.toString()} as ArrayList<String>

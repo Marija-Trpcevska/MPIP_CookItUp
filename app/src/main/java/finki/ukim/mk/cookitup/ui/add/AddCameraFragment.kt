@@ -12,8 +12,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.ui.graphics.asAndroidBitmap
-import androidx.compose.ui.graphics.asImageBitmap
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
@@ -41,7 +39,7 @@ class AddCameraFragment: Fragment() {
             if (result.resultCode == Activity.RESULT_OK) {
                 val path = mainFile.absolutePath
                 val bitmap = BitmapFactory.decodeFile(path)
-                binding.showPhoto.setImageBitmap(bitmap.asImageBitmap().asAndroidBitmap())
+                binding.showPhoto.setImageBitmap(bitmap)
                 binding.showPhoto.visibility = View.VISIBLE
                 binding.cameraTaker.apply {
                     icon = null
@@ -123,7 +121,7 @@ class AddCameraFragment: Fragment() {
             val image = drawableToBitmap(binding.showPhoto,requireContext())
             val recipe = RecipeCamera(
                 binding.cameraTitle.text.toString(),
-                image.asImageBitmap(),
+                image,
                 binding.photoNotes.text.toString(),
                 binding.recipeMealType2.checkedChipIds.map { chip: Int -> binding.recipeMealType2.findViewById<Chip>(chip).text.toString()} as ArrayList<String>
             )

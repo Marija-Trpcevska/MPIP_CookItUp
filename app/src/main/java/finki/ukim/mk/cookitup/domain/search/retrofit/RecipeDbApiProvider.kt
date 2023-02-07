@@ -18,18 +18,18 @@ class RecipeDbApiProvider {
         private var INSTANCE: RecipeDbApi? = null
 
         @JvmStatic
-        fun getMovieDbApi(): RecipeDbApi {
+        fun getRecipeDbApi(): RecipeDbApi {
             // if the INSTANCE is not null, then return it,
             // if it is, then create the database
             return INSTANCE ?: synchronized(this) {
-                val instance = createMovieDbApi()
+                val instance = createRecipeDbApi()
                 INSTANCE = instance
                 // return instance
                 instance
             }
         }
 
-        private fun createMovieDbApi(): RecipeDbApi {
+        private fun createRecipeDbApi(): RecipeDbApi {
             class QueryParamInterceptor : Interceptor {
                 @Throws(IOException::class)
                 override fun intercept(chain: Interceptor.Chain): Response {

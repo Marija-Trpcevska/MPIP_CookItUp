@@ -3,7 +3,6 @@ package finki.ukim.mk.cookitup.adapters
 import android.animation.LayoutTransition
 import android.transition.AutoTransition
 import android.transition.TransitionManager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,10 +21,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import finki.ukim.mk.cookitup.R
 import finki.ukim.mk.cookitup.domain.search.model.RecipeApi
 
-class RecipeApiAdapter(private val data: ArrayList<RecipeApi> = ArrayList(), var onClickListener : ((RecipeApi) -> Unit)) :
-    RecyclerView.Adapter<RecipeApiAdapter.RecipeViewHolder>() {
+class RecipeApiShowAdapter(private val data: ArrayList<RecipeApi> = ArrayList(), var onClickListener : ((RecipeApi) -> Unit)) :
+    RecyclerView.Adapter<RecipeApiShowAdapter.RecipeShowViewHolder>() {
 
-    class RecipeViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
+    class RecipeShowViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
 
         private var layout : ConstraintLayout
         private var recipeTitle: TextView
@@ -35,21 +34,21 @@ class RecipeApiAdapter(private val data: ArrayList<RecipeApi> = ArrayList(), var
         private var source: TextView
         private var url: TextView
         private var fab: FloatingActionButton
-        private var currentRecipe:RecipeApi?
+        private var currentRecipe: RecipeApi?
 
         init {
-            layout = itemView.findViewById(R.id.layout_api)
-            recipeTitle = itemView.findViewById(R.id.recipe_title)
-            recipeImage = itemView.findViewById(R.id.recipe_image)
-            ingredients = itemView.findViewById(R.id.recipe_ingredient_lines)
-            chips = itemView.findViewById(R.id.recipe_chips_info)
-            source = itemView.findViewById(R.id.recipe_source)
-            url = itemView.findViewById(R.id.recipe_source_url)
-            fab = itemView.findViewById(R.id.api_fab)
+            layout = itemView.findViewById(R.id.layout_api_added)
+            recipeTitle = itemView.findViewById(R.id.recipe_title_added)
+            recipeImage = itemView.findViewById(R.id.recipe_image_added)
+            ingredients = itemView.findViewById(R.id.recipe_ingredient_lines_added)
+            chips = itemView.findViewById(R.id.recipe_chips_info_added)
+            source = itemView.findViewById(R.id.recipe_source_added)
+            url = itemView.findViewById(R.id.recipe_source_url_added)
+            fab = itemView.findViewById(R.id.api_fab_added)
             currentRecipe = null
         }
 
-        fun bind(recipe:RecipeApi) {
+        fun bind(recipe: RecipeApi) {
             layout.layoutTransition.enableTransitionType(LayoutTransition.CHANGING)
             recipeTitle.text = recipe.label
             //ZAMENI
@@ -63,7 +62,7 @@ class RecipeApiAdapter(private val data: ArrayList<RecipeApi> = ArrayList(), var
                 it.isEnabled=false
                 if(recipe.mealType.contains(itemView.findViewById<Chip>(it.id).text.toString()))
                 {
-                    it.visibility=View.VISIBLE
+                    it.visibility= View.VISIBLE
                 }
             }
             source.text = recipe.source
@@ -73,18 +72,18 @@ class RecipeApiAdapter(private val data: ArrayList<RecipeApi> = ArrayList(), var
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.recipe_api_item_view,parent,false)
-        val holder = RecipeViewHolder(view)
-        val layout = holder.itemView.findViewById<ConstraintLayout>(R.id.layout_api)
-        val divider=  holder.itemView.findViewById<View>(R.id.recipe_divider)
-        val ingredients =  holder.itemView.findViewById<RecyclerView>(R.id.recipe_ingredient_lines)
-        val chips = holder.itemView.findViewById<HorizontalScrollView>(R.id.scroll_chip)
-        val source = holder.itemView.findViewById<LinearLayout>(R.id.recipe_source_layout)
-        val url = holder.itemView.findViewById<LinearLayout>(R.id.recipe_source_url_layout)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeShowViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.recipe_api_item_added,parent,false)
+        val holder = RecipeShowViewHolder(view)
+        val layout = holder.itemView.findViewById<ConstraintLayout>(R.id.layout_api_added)
+        val divider=  holder.itemView.findViewById<View>(R.id.recipe_divider_added)
+        val ingredients =  holder.itemView.findViewById<RecyclerView>(R.id.recipe_ingredient_lines_added)
+        val chips = holder.itemView.findViewById<HorizontalScrollView>(R.id.scroll_chip_added)
+        val source = holder.itemView.findViewById<LinearLayout>(R.id.recipe_source_layout_added)
+        val url = holder.itemView.findViewById<LinearLayout>(R.id.recipe_source_url_layout_added)
 
-        val fab = holder.itemView.findViewById<FloatingActionButton>(R.id.api_fab)
-        holder.itemView.findViewById<CardView>(R.id.card_api).setOnClickListener{
+        val fab = holder.itemView.findViewById<FloatingActionButton>(R.id.api_fab_added)
+        holder.itemView.findViewById<CardView>(R.id.card_api_added).setOnClickListener{
 
             TransitionManager.beginDelayedTransition(layout, AutoTransition())
 
@@ -99,11 +98,21 @@ class RecipeApiAdapter(private val data: ArrayList<RecipeApi> = ArrayList(), var
         }
         fab.setOnClickListener{
             onClickListener.invoke(data[holder.absoluteAdapterPosition])
+
+            TransitionManager.beginDelayedTransition(layout, AutoTransition())
+
+            val visibile = if(divider.visibility == View.GONE) View.VISIBLE else View.GONE
+            divider.visibility = visibile
+            ingredients.visibility = visibile
+            chips.visibility = visibile
+            source.visibility = visibile
+            url.visibility = visibile
+            fab.visibility = visibile
         }
         return holder
     }
 
-    override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: RecipeShowViewHolder, position: Int) {
         val recipe : RecipeApi = data[position]
         holder.bind(recipe)
     }

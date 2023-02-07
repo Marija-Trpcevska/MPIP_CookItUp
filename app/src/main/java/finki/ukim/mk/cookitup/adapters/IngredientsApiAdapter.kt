@@ -36,9 +36,7 @@ class IngredientsApiAdapter(private val data: ArrayList<String> = ArrayList() ):
     }
 
     fun addItemsToAdapter(ingredients: ArrayList<String>) {
-        if (ingredients!=null) {
-            this.data.addAll(ingredients)
-        }
+        this.data.addAll(ingredients)
         notifyDataSetChanged()
     }
 }

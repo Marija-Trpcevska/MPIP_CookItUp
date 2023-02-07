@@ -21,4 +21,11 @@ class SearchViewModel(private val recipeApiRepository: RecipeApiRepository) : Vi
             recipesLiveData.postValue(recipes)
         }
     }
+
+    fun listRecipesInCache(){
+        viewModelScope.launch(Dispatchers.IO) {
+            val recipes = recipeApiRepository.listRecipesInCache()
+            recipesLiveData.postValue(recipes)
+        }
+    }
 }

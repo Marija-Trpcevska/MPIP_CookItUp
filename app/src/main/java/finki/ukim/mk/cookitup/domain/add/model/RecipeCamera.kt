@@ -1,5 +1,5 @@
 package finki.ukim.mk.cookitup.domain.add.model
 
-import androidx.compose.ui.graphics.ImageBitmap
+import android.graphics.Bitmap
 
-data class RecipeCamera(val label:String, val image: ImageBitmap, val notes: String, val mealType: List<String>)
+data class RecipeCamera(val label:String, val image: Bitmap, val notes: String, val mealType: List<String>)

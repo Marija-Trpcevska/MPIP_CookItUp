@@ -93,8 +93,6 @@
                 android:id="@+id/recipe_mealType_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp">
 
@@ -128,7 +126,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/chip_snack"
-                    android:textSize="13sp"
                     />
 
                 <com.google.android.material.chip.Chip
