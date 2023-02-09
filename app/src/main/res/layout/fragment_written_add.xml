@@ -99,7 +99,8 @@
                 app:layout_constraintEnd_toStartOf="@id/btn_add_ingredient"
                 app:layout_constraintHorizontal_bias="0.504"
                 app:layout_constraintStart_toStartOf="@id/interactable"
-                app:layout_constraintTop_toTopOf="@id/interactable" />
+                app:layout_constraintTop_toTopOf="@id/interactable"
+                />
 
             <ImageButton
                 android:id="@+id/btn_add_ingredient"

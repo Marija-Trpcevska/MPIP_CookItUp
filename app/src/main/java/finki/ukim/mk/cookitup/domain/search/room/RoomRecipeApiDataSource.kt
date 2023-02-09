@@ -35,10 +35,6 @@ class RoomRecipeApiDataSource(private val recipeApiDao: RecipeApiDao): LocalReci
         return recipeApiDao.getAddedRecipes()
     }
 
-    override suspend fun getAddedRecipe(id: String): RecipeApi {
-        return recipeApiDao.getAddedRecipe(id)
-    }
-
 }
 
 

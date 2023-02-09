@@ -1,6 +1,13 @@
 package finki.ukim.mk.cookitup.domain.add.model
 
-import android.graphics.Bitmap
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-
-data class RecipeWritten(val label:String, val image: Bitmap, val ingredientLines: ArrayList<String>, val instructions: String, val mealType: ArrayList<String>)
+@Entity(tableName = "written")
+data class RecipeWritten(
+    @PrimaryKey(autoGenerate = true) var id: Int,
+    val label:String,
+    val image: String,
+    val ingredientLines: ArrayList<String>,
+    val instructions: String,
+    val mealType: ArrayList<String>)

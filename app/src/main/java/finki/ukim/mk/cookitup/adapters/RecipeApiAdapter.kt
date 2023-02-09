@@ -3,7 +3,6 @@ package finki.ukim.mk.cookitup.adapters
 import android.animation.LayoutTransition
 import android.transition.AutoTransition
 import android.transition.TransitionManager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -52,7 +51,6 @@ class RecipeApiAdapter(private val data: ArrayList<RecipeApi> = ArrayList(), var
         fun bind(recipe:RecipeApi) {
             layout.layoutTransition.enableTransitionType(LayoutTransition.CHANGING)
             recipeTitle.text = recipe.label
-            //ZAMENI
             Glide.with(recipeImage)
                 .load(recipe.image)
                 .centerCrop().placeholder(R.drawable.ic_baseline_image_not_supported_24).into(recipeImage)
@@ -82,19 +80,20 @@ class RecipeApiAdapter(private val data: ArrayList<RecipeApi> = ArrayList(), var
         val chips = holder.itemView.findViewById<HorizontalScrollView>(R.id.scroll_chip)
         val source = holder.itemView.findViewById<LinearLayout>(R.id.recipe_source_layout)
         val url = holder.itemView.findViewById<LinearLayout>(R.id.recipe_source_url_layout)
-
         val fab = holder.itemView.findViewById<FloatingActionButton>(R.id.api_fab)
+
+        layout.layoutTransition.setAnimateParentHierarchy(false)
         holder.itemView.findViewById<CardView>(R.id.card_api).setOnClickListener{
 
             TransitionManager.beginDelayedTransition(layout, AutoTransition())
 
-            val visibile = if(divider.visibility == View.GONE) View.VISIBLE else View.GONE
-            divider.visibility = visibile
-            ingredients.visibility = visibile
-            chips.visibility = visibile
-            source.visibility = visibile
-            url.visibility = visibile
-            fab.visibility = visibile
+            val visible = if(divider.visibility == View.GONE) View.VISIBLE else View.GONE
+            divider.visibility = visible
+            ingredients.visibility = visible
+            chips.visibility = visible
+            source.visibility = visible
+            url.visibility = visible
+            fab.visibility = visible
 
         }
         fab.setOnClickListener{

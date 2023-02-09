@@ -1,6 +1,5 @@
 package finki.ukim.mk.cookitup.domain.search.room
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import finki.ukim.mk.cookitup.domain.search.model.RecipeApi
 
@@ -24,8 +23,5 @@ interface RecipeApiDao {
 
     @Query("SELECT * FROM api WHERE added=1")
     suspend fun getAddedRecipes(): List<RecipeApi>
-
-    @Query("SELECT * FROM api WHERE uri=:id")
-    suspend fun getAddedRecipe(id: String): RecipeApi
 
 }

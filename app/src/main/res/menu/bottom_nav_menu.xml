@@ -16,4 +16,10 @@
         android:icon="@drawable/ic_baseline_library_add_24"
         android:title="@string/title_add" />
 
+    <item
+        android:id="@+id/navigation_login"
+        android:icon="@drawable/ic_baseline_backup_24"
+        android:title="@string/title_backup"
+        />
+
 </menu>

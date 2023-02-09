@@ -1,10 +1,12 @@
 package finki.ukim.mk.cookitup.ui.add
 
 import android.app.Activity
+import android.content.ContentResolver
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.ColorStateList
 import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.LayoutInflater
@@ -16,12 +18,14 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import com.google.android.material.chip.Chip
 import com.google.android.material.snackbar.Snackbar
 import finki.ukim.mk.cookitup.R
 import finki.ukim.mk.cookitup.databinding.FragmentCameraAddBinding
 import finki.ukim.mk.cookitup.domain.add.model.RecipeCamera
-import finki.ukim.mk.cookitup.helpers.drawableToBitmap
+import finki.ukim.mk.cookitup.ui.home.ShowCameraViewModel
+import finki.ukim.mk.cookitup.ui.home.ShowCameraViewModelFactory
 import java.io.File
 import java.io.IOException
 
@@ -32,7 +36,11 @@ class AddCameraFragment: Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private val showCameraViewModel by activityViewModels<ShowCameraViewModel>{
+        ShowCameraViewModelFactory(requireContext())
+    }
     private lateinit var mainFile : File
+    private lateinit var noImage : Uri
 
     private val resultLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -41,6 +49,7 @@ class AddCameraFragment: Fragment() {
                 val bitmap = BitmapFactory.decodeFile(path)
                 binding.showPhoto.setImageBitmap(bitmap)
                 binding.showPhoto.visibility = View.VISIBLE
+                binding.showPhoto.tag = path
                 binding.cameraTaker.apply {
                     icon = null
                     backgroundTintList = null
@@ -51,6 +60,7 @@ class AddCameraFragment: Fragment() {
                     binding.showPhoto.setImageBitmap(null)
                     binding.showPhoto.setImageDrawable(null)
                     binding.showPhoto.visibility = View.INVISIBLE
+                    binding.showPhoto.tag = noImage
                     binding.cameraTaker.apply {
                         icon = ContextCompat.getDrawable(
                             context,
@@ -107,6 +117,12 @@ class AddCameraFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCameraAddBinding.inflate(inflater, container, false)
+        noImage = Uri.parse(
+                ContentResolver.SCHEME_ANDROID_RESOURCE
+                        + "://" + requireContext().resources.getResourcePackageName(R.drawable.ic_baseline_image_not_supported_24)
+                        + '/' + requireContext().resources.getResourceTypeName(R.drawable.ic_baseline_image_not_supported_24)
+                        + '/' + requireContext().resources.getResourceEntryName(R.drawable.ic_baseline_image_not_supported_24) )
+        binding.showPhoto.tag = noImage
         return binding.root
     }
 
@@ -118,15 +134,23 @@ class AddCameraFragment: Fragment() {
             checkCameraPermission()
         }
         binding.photoFab.setOnClickListener{
-            val image = drawableToBitmap(binding.showPhoto,requireContext())
-            val recipe = RecipeCamera(
-                binding.cameraTitle.text.toString(),
-                image,
-                binding.photoNotes.text.toString(),
-                binding.recipeMealType2.checkedChipIds.map { chip: Int -> binding.recipeMealType2.findViewById<Chip>(chip).text.toString()} as ArrayList<String>
-            )
-            //I POTOA ADD VO BAZA
-            Snackbar.make(binding.recipeCameraLayout, "Recipe added to your collection", Snackbar.LENGTH_SHORT).show()
+            if(binding.cameraTitle.text.isEmpty() || binding.showPhoto.tag.equals(noImage)){
+                if(binding.cameraTitle.text.isEmpty()){binding.cameraTitle.error = "Recipe title is required"}
+                if(binding.showPhoto.tag.equals(noImage)){binding.cameraTakerLabel.error = "Recipe photo is required"}
+            }
+            else {
+                binding.cameraTakerLabel.error = null
+                val recipe = RecipeCamera(
+                    0,
+                    binding.cameraTitle.text.toString(),
+                    binding.showPhoto.tag.toString(),
+                    binding.photoNotes.text.toString(),
+                    binding.recipeMealType2.checkedChipIds.map { chip: Int -> binding.recipeMealType2.findViewById<Chip>(chip).text.toString()} as ArrayList<String>
+                )
+                showCameraViewModel.addRecipe(recipe)
+                val snack = Snackbar.make(binding.recipeCameraLayout, "Recipe added to your collection",Snackbar.LENGTH_SHORT)
+                snack.show()
+            }
         }
     }
 

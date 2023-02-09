@@ -19,6 +19,12 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions{
+            annotationProcessorOptions{
+                arguments += ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
     }
 
     buildTypes {
@@ -63,6 +69,7 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$logging_interceptor"
     implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.7'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
     //Paging
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
 

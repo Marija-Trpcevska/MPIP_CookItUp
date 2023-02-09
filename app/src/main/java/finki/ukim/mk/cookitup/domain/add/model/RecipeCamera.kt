@@ -1,5 +1,12 @@
 package finki.ukim.mk.cookitup.domain.add.model
 
-import android.graphics.Bitmap
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-data class RecipeCamera(val label:String, val image: Bitmap, val notes: String, val mealType: List<String>)
+@Entity(tableName = "camera")
+data class RecipeCamera(
+    @PrimaryKey(autoGenerate = true) var id: Int,
+    val label:String,
+    val image: String,
+    val notes: String,
+    val mealType: List<String>)

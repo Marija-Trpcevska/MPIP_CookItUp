@@ -1,8 +1,5 @@
 package finki.ukim.mk.cookitup.domain.search
 
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
 import finki.ukim.mk.cookitup.domain.search.model.RecipeApi
 
 interface LocalRecipeApiDataSource {
@@ -21,5 +18,4 @@ interface LocalRecipeApiDataSource {
 
     suspend fun getAddedRecipes(): List<RecipeApi>
 
-    suspend fun getAddedRecipe(id: String): RecipeApi
 }

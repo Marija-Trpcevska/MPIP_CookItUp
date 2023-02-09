@@ -5,15 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
+import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
+import finki.ukim.mk.cookitup.R
 import finki.ukim.mk.cookitup.adapters.RecipeApiShowAdapter
 import finki.ukim.mk.cookitup.databinding.FragmentShowApiBinding
 
 class ShowApiFragment : Fragment() {
     private var _binding: FragmentShowApiBinding? = null
     private val binding get() = _binding!!
-    private var showApiViewModel: ShowApiViewModel? = null
+    private val showApiViewModel by activityViewModels<ShowApiViewModel>{
+        ShowApiViewModelFactory(requireContext())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -21,28 +25,25 @@ class ShowApiFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentShowApiBinding.inflate(inflater, container, false)
-        showApiViewModel =
-            activity?.let{ViewModelProvider(it, ShowApiViewModelFactory(requireContext()))}?.get(ShowApiViewModel::class.java)
-//        showApiViewModel =
-//            ViewModelProvider(requireActivity(), ShowApiViewModelFactory(requireContext()))[ShowApiViewModel::class.java]
-        showApiViewModel?.listAddedRecipes()
-        //I POTOA DELETE OD BAZA
-        val adapter =  RecipeApiShowAdapter(onClickListener = {
-            showApiViewModel?.deleteRecipe(it)
-            Snackbar.make(binding.layoutShowApi,"Recipe removed from your collection", Snackbar.LENGTH_SHORT).show()
-        })
-
-        binding.addedList.adapter = adapter
-        showApiViewModel?.getAddedRecipesLiveData()?.observe(viewLifecycleOwner) {
-            adapter.setItemsToAdapter(it)
-        }
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        showApiViewModel?.listAddedRecipes()
+        val adapter =  RecipeApiShowAdapter(onClickListener = {
+                recipe ->
+            val snack = Snackbar.make(binding.layoutShowApi,getString(R.string.recipe_removed_snackbar), Snackbar.LENGTH_SHORT)
+                .setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_FADE)
+                .setAction(getString(R.string.recipe_undo_snackbar)){showApiViewModel.addRecipe(recipe)}
+            showApiViewModel.deleteRecipe(recipe)
+            snack.anchorView = requireActivity().findViewById(R.id.nav_view)
+            snack.show()
+        })
+        binding.addedList.adapter = adapter
+        showApiViewModel.getAddedRecipesLiveData().observe(viewLifecycleOwner) {
+            adapter.setItemsToAdapter(it)
+        }
+        showApiViewModel.listAddedRecipes()
     }
 
     override fun onDestroyView() {

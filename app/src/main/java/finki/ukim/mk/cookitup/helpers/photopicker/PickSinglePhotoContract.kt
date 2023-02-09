@@ -1,4 +1,4 @@
-package finki.ukim.mk.cookitup.helpers
+package finki.ukim.mk.cookitup.helpers.photopicker
 
 import android.app.Activity
 import android.content.Context

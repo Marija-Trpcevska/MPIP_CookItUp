@@ -24,16 +24,16 @@ class IngredientsAdapter(private val data: ArrayList<String> = ArrayList() ):Rec
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IngredientsAdapter.IngredientViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.ingredient_item_view,parent,false)
-        val holder = IngredientsAdapter.IngredientViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IngredientViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.ingredient_item_add,parent,false)
+        val holder = IngredientViewHolder(view)
         holder.itemView.findViewById<ImageButton>(R.id.ingredient_btn_delete).setOnClickListener {
             removeItemFromAdapter(holder.absoluteAdapterPosition)
         }
         return holder
     }
 
-    override fun onBindViewHolder(holder: IngredientsAdapter.IngredientViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: IngredientViewHolder, position: Int) {
         val ingredient : String = data[position]
         holder.bind(ingredient)
     }
@@ -46,7 +46,7 @@ class IngredientsAdapter(private val data: ArrayList<String> = ArrayList() ):Rec
         this.data.add(ingredient)
         notifyItemInserted(data.indexOf(ingredient))
     }
-     fun removeItemFromAdapter(position: Int){
+     private fun removeItemFromAdapter(position: Int){
          this.data.removeAt(position)
          notifyItemRemoved(position)
      }

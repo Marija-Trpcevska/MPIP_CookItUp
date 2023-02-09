@@ -5,10 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
+import finki.ukim.mk.cookitup.R
 import finki.ukim.mk.cookitup.adapters.RecipeApiAdapter
 import finki.ukim.mk.cookitup.databinding.FragmentSearchBinding
 import finki.ukim.mk.cookitup.ui.home.ShowApiViewModel
@@ -22,7 +22,7 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener {
     // onDestroyView.
     private val binding get() = _binding!!
     private lateinit var searchViewModel : SearchViewModel
-    private var showApiViewModel: ShowApiViewModel? = null
+    private lateinit var showApiViewModel: ShowApiViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,17 +33,16 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener {
             ViewModelProvider(this, SearchViewModelFactory(requireContext()))[SearchViewModel::class.java]
 
         showApiViewModel =
-            activity?.let{ViewModelProvider(it, ShowApiViewModelFactory(requireContext()))}?.get(ShowApiViewModel::class.java)
-//        showApiViewModel =
-//            ViewModelProvider(requireActivity(), ShowApiViewModelFactory(requireContext()))[ShowApiViewModel::class.java]
+            ViewModelProvider(requireActivity(), ShowApiViewModelFactory(requireContext()))[ShowApiViewModel::class.java]
 
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        //I POTOA ADD VO BAZA
         val adapter = RecipeApiAdapter(onClickListener = {
-            showApiViewModel?.addRecipe(it)
-            Snackbar.make(binding.searchLayout,"Recipe added to your collection", Snackbar.LENGTH_SHORT).show()
+            showApiViewModel.addRecipe(it)
+            val snack = Snackbar.make(binding.searchLayout,"Recipe added to your collection", Snackbar.LENGTH_SHORT)
+            snack.anchorView = requireActivity().findViewById(R.id.nav_view)
+            snack.show()
         })
         binding.list.adapter = adapter
         searchViewModel.getRecipesLiveData().observe(viewLifecycleOwner) {
