@@ -9,12 +9,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.result.launch
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.google.android.material.chip.Chip
@@ -26,6 +28,7 @@ import finki.ukim.mk.cookitup.domain.add.model.RecipeWritten
 import finki.ukim.mk.cookitup.helpers.photopicker.PickSinglePhotoContract
 import finki.ukim.mk.cookitup.ui.home.ShowWrittenViewModel
 import finki.ukim.mk.cookitup.ui.home.ShowWrittenViewModelFactory
+import io.github.muddz.styleabletoast.StyleableToast
 
 
 class AddWrittenFragment: Fragment() {
@@ -76,7 +79,7 @@ class AddWrittenFragment: Fragment() {
                 singlePhotoPickerLauncher.launch()
             }
             else
-                Toast.makeText(context, "Gallery access permission denied", Toast.LENGTH_SHORT).show()
+                StyleableToast.makeText(requireContext(), "Gallery access permission denied", Toast.LENGTH_SHORT, R.style.Toast).show()
         }
 
 
@@ -136,6 +139,8 @@ class AddWrittenFragment: Fragment() {
                     )
                 showWrittenViewModel.addRecipe(recipe)
                 val snack = Snackbar.make(binding.recipeAddLayout, "Recipe added to your collection", Snackbar.LENGTH_SHORT)
+                val font = ResourcesCompat.getFont(requireContext(), R.font.comfortaa)
+                snack.view.findViewById<TextView>(com.google.android.material.R.id.snackbar_text).typeface = font
                 snack.show()
             }
         }

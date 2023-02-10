@@ -6,7 +6,7 @@ import finki.ukim.mk.cookitup.domain.search.model.RecipeApi
 @Dao
 interface RecipeApiDao {
 
-    @Insert(onConflict = OnConflictStrategy.ABORT)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertInCache(recipe: RecipeApi)
 
     @Query("UPDATE api SET added=1 WHERE uri=:id")

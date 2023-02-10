@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
+import android.widget.TextView
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
@@ -13,6 +15,7 @@ import finki.ukim.mk.cookitup.adapters.RecipeApiAdapter
 import finki.ukim.mk.cookitup.databinding.FragmentSearchBinding
 import finki.ukim.mk.cookitup.ui.home.ShowApiViewModel
 import finki.ukim.mk.cookitup.ui.home.ShowApiViewModelFactory
+
 
 class SearchFragment : Fragment(), SearchView.OnQueryTextListener {
 
@@ -40,7 +43,9 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener {
 
         val adapter = RecipeApiAdapter(onClickListener = {
             showApiViewModel.addRecipe(it)
+            val font = ResourcesCompat.getFont(requireContext(), R.font.comfortaa)
             val snack = Snackbar.make(binding.searchLayout,"Recipe added to your collection", Snackbar.LENGTH_SHORT)
+            snack.view.findViewById<TextView>(com.google.android.material.R.id.snackbar_text).typeface = font
             snack.anchorView = requireActivity().findViewById(R.id.nav_view)
             snack.show()
         })
@@ -49,6 +54,11 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener {
             adapter.setItemsToAdapter(it)
         }
         binding.queryField.clearFocus()
+
+//        val font = ResourcesCompat.getFont(requireContext(), finki.ukim.mk.cookitup.R.font.amatic_sc_bold)
+//        val searchViewTextView = binding.queryField.findViewById<SearchAutoComplete>(android.R.id.search_src_text)
+//        searchViewTextView.typeface = font
+
         return root
     }
 

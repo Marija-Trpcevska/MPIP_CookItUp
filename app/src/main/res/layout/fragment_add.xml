@@ -5,29 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginBottom="?android:attr/actionBarSize"
-    tools:context=".ui.add.AddFragment">
-
+    tools:context=".ui.add.AddFragment"
+    android:background="@drawable/fragment_add_background"
+    >
     <androidx.constraintlayout.widget.Group
         android:id="@+id/text_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="25dp"
         app:constraint_referenced_ids="text_options_present"
         app:layout_constraintBottom_toTopOf="@id/write_group"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="100dp"/>
 
     <TextView
         android:id="@+id/text_options_present"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/amatic_sc_bold"
         android:text="@string/add_fragment_options_present"
         android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintTop_toTopOf="@id/text_group"
-        app:layout_constraintBottom_toBottomOf="@id/text_group"/>
+        android:textSize="35sp"
+        app:layout_constraintTop_toTopOf="@id/text_group" />
 
     <androidx.constraintlayout.widget.Group
-        android:layout_marginVertical="25dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="100dp"
         android:id="@+id/write_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,10 +41,10 @@
         android:id="@+id/write_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:text="@string/text_options_write"
         android:textAlignment="center"
-        android:textSize="20sp"
+        android:textSize="33sp"
+        android:fontFamily="@font/amatic_sc_bold"
         app:layout_constraintTop_toTopOf="@id/write_group"
         app:layout_constraintBottom_toTopOf="@id/write_image"/>
 
@@ -57,22 +59,27 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/write_text"
         app:layout_constraintBottom_toTopOf="@id/write_button"
-        app:layout_constraintWidth_percent=".4" />
+        app:layout_constraintWidth_percent=".4"
+        android:layout_marginVertical="5dp"/>
 
     <Button
         android:id="@+id/write_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:fontFamily="@font/comfortaa_bold"
         android:text="@string/create_btn"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@id/write_group"
         app:layout_constraintEnd_toEndOf="@id/camera_group"
         app:layout_constraintStart_toStartOf="@id/camera_group"
         app:layout_constraintTop_toBottomOf="@id/write_image"
-        app:layout_constraintBottom_toBottomOf="@id/write_group"/>
+        android:textAllCaps="false"/>
 
     <androidx.constraintlayout.widget.Group
+        android:layout_marginTop="35dp"
+        android:layout_marginBottom="110dp"
         android:id="@+id/camera_group"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="85dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:constraint_referenced_ids="camera_text,camera_image,camera_button"
@@ -83,11 +90,11 @@
         android:id="@+id/camera_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:gravity="center"
+        android:layout_marginTop="30dp"
         android:text="@string/text_options_camera"
         android:textAlignment="center"
-        android:textSize="20sp"
+        android:fontFamily="@font/amatic_sc_bold"
+        android:textSize="33sp"
         app:layout_constraintBottom_toTopOf="@id/camera_image"
         app:layout_constraintTop_toTopOf="@id/camera_group" />
 
@@ -102,17 +109,22 @@
         app:layout_constraintStart_toStartOf="@id/camera_group"
         app:layout_constraintTop_toBottomOf="@id/camera_text"
         app:layout_constraintBottom_toTopOf="@id/camera_button"
-        app:layout_constraintWidth_percent=".4" />
+        app:layout_constraintWidth_percent=".4"
+        android:layout_marginVertical="5dp"/>
 
     <Button
         android:id="@+id/camera_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/comfortaa_bold"
+        android:padding="10dp"
         android:text="@string/take_btn"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@id/camera_group"
         app:layout_constraintEnd_toEndOf="@id/camera_group"
         app:layout_constraintStart_toStartOf="@id/camera_group"
         app:layout_constraintTop_toBottomOf="@id/camera_image"
-        app:layout_constraintBottom_toBottomOf="@id/camera_group"
-        />
+        android:textAllCaps="false"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

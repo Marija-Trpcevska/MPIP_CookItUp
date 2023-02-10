@@ -12,4 +12,15 @@
     <color name="element_black">#494949</color>
     <color name="element_white">#d3d8e3</color>
     <color name="search_field_background">#F5f9f9</color>
+
+    <color name="color_primary">#4caf50</color>
+    <color name="color_primary_variant">#6fbf73</color>
+    <color name="color_on_primary">#357a38</color>
+    <!-- Secondary brand color. -->
+    <color name="color_secondary">#c6ff00</color>
+    <color name="color_secondary_variant">#d1ff33</color>
+    <color name="color_on_secondary">#8ab200</color>
+
+    <color name="background_color">#f1f8e9</color>
+    <color name="transparent">#00000000</color>
 </resources>

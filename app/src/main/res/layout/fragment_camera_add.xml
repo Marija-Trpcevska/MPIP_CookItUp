@@ -1,157 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="false"
     android:orientation="vertical"
-    android:id="@+id/recipe_camera_layout">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/fragment_add_camera_background"
+    >
+    <ScrollView
+        android:id="@+id/recipe_camera_layout"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:fillViewport="false"
+        android:orientation="vertical"
+        >
 
-        <EditText
-            android:id="@+id/camera_title"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:hint="@string/recipe_written_title"
-            android:inputType="text"
-            android:textSize="30sp"
-            app:layout_constraintBottom_toTopOf="@id/camera_taker_label"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/camera_taker_label"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:labelFor="@id/image_picker"
-            android:text="@string/recipe_written_image"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@id/camera_taker"
-            app:layout_constraintTop_toBottomOf="@id/camera_title" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/camera_taker"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@drawable/border_dashed"
-            android:contentDescription="@string/iconPlaceholder"
-            app:backgroundTint="@color/cardview_light_background"
-            app:icon="@drawable/ic_add_a_photo_from_camera"
-            app:iconGravity="textStart"
-            app:iconSize="35dp"
-            app:iconTint="@color/black"
-            app:layout_constraintBottom_toTopOf="@id/photo_notes"
-            app:layout_constraintDimensionRatio="1:0.5"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/camera_taker_label"
-            app:layout_constraintWidth_percent=".923" />
-
-        <ImageView
-            android:id="@+id/show_photo"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:scaleType="centerCrop"
-            android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@id/photo_notes"
-            app:layout_constraintDimensionRatio="1:0.5"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/camera_taker_label"
-            app:layout_constraintWidth_percent=".923" />
-
-        <EditText
-            android:id="@+id/photo_notes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:lines="4"
-            android:scrollbars="vertical"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:hint="@string/recipe_photo_notes"
-            app:layout_constraintTop_toBottomOf="@id/camera_taker"
-            app:layout_constraintBottom_toTopOf="@id/chip_scroll_camera"
-            android:inputType="textMultiLine" />
-
-        <HorizontalScrollView
-            android:id="@+id/chip_scroll_camera"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintBottom_toTopOf="@id/photo_fab"
-            app:layout_constraintTop_toBottomOf="@id/photo_notes"
-            >
-            <com.google.android.material.chip.ChipGroup
-                android:id="@+id/recipe_mealType_2"
+            <EditText
+                android:id="@+id/camera_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp">
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="5dp"
+                android:hint="@string/recipe_written_title"
+                android:inputType="text"
+                android:textSize="25sp"
+                app:layout_constraintBottom_toTopOf="@id/camera_taker_label"
+                app:layout_constraintTop_toTopOf="parent"
+                android:fontFamily="@font/comfortaa"
+                android:autofillHints="@string/recipe_written_title" />
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_breakfast_2"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
+            <TextView
+                android:id="@+id/camera_taker_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="5dp"
+                android:labelFor="@id/image_picker"
+                android:text="@string/recipe_camera_add_prompt"
+                android:textSize="27sp"
+                app:layout_constraintBottom_toTopOf="@id/camera_taker"
+                app:layout_constraintTop_toBottomOf="@id/camera_title"
+                android:fontFamily="@font/amatic_sc_bold"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/camera_taker"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/border_dashed"
+                android:contentDescription="@string/iconPlaceholder"
+                app:backgroundTint="@color/cardview_light_background"
+                app:icon="@drawable/ic_add_a_photo_from_camera"
+                app:iconGravity="textStart"
+                app:iconSize="35dp"
+                app:iconTint="@color/black"
+                app:layout_constraintBottom_toTopOf="@id/photo_notes"
+                app:layout_constraintDimensionRatio="1:0.5"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/camera_taker_label"
+                app:layout_constraintWidth_percent=".923"
+                android:layout_marginBottom="5dp"/>
+
+            <ImageView
+                android:id="@+id/show_photo"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@id/photo_notes"
+                app:layout_constraintDimensionRatio="1:0.5"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/camera_taker_label"
+                app:layout_constraintWidth_percent=".923"
+                android:contentDescription="@string/iconPlaceholder" />
+
+            <EditText
+                android:id="@+id/photo_notes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:lines="3"
+                android:scrollbars="vertical"
+                android:textSize="16sp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="6dp"
+                android:hint="@string/recipe_photo_notes"
+                app:layout_constraintTop_toBottomOf="@id/camera_taker"
+                app:layout_constraintBottom_toTopOf="@id/chip_scroll_camera"
+                android:autofillHints="@string/recipe_photo_notes"
+                android:background="@drawable/view_rounded_corners"
+                android:fontFamily="@font/comfortaa"
+                android:padding="5dp"
+                />
+
+            <HorizontalScrollView
+                android:id="@+id/chip_scroll_camera"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintBottom_toTopOf="@id/photo_fab"
+                app:layout_constraintTop_toBottomOf="@id/photo_notes"
+                android:fadeScrollbars="false"
+                android:scrollbarFadeDuration="0"
+                >
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/recipe_mealType_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="false"
-                    android:text="@string/chip_breakfast" />
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    app:singleLine="true">
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_brunch_2"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="false"
-                    android:text="@string/chip_brunch" />
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_breakfast_2"
+                        style="@style/ChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:text="@string/chip_breakfast"
+                        android:textAppearance="@style/ChipText"/>
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_lunch_2"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="false"
-                    android:text="@string/chip_lunch" />
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_brunch_2"
+                        style="@style/ChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:text="@string/chip_brunch"
+                        android:textAppearance="@style/ChipText"/>
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_snack_2"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/chip_snack"
-                    />
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_lunch_2"
+                        style="@style/ChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:text="@string/chip_lunch"
+                        android:textAppearance="@style/ChipText"
+                        />
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_teatime_2"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="false"
-                    android:text="@string/chip_teatime" />
-            </com.google.android.material.chip.ChipGroup>
-        </HorizontalScrollView>
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_snack_2"
+                        style="@style/ChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/chip_snack"
+                        android:textAppearance="@style/ChipText"
+                        />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/photo_fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:layout_gravity="end|bottom"
-            android:src="@drawable/ic_baseline_add_24"
-            app:fabSize="mini"
-            android:text="@string/fab_add"
-            app:layout_constraintTop_toBottomOf="@id/chip_scroll_camera"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_teatime_2"
+                        style="@style/ChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:text="@string/chip_teatime"
+                        android:textAppearance="@style/ChipText"/>
+                </com.google.android.material.chip.ChipGroup>
+            </HorizontalScrollView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/photo_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_gravity="end|bottom"
+                android:src="@drawable/ic_baseline_add_24"
+                app:fabSize="mini"
+                android:text="@string/fab_add"
+                app:layout_constraintTop_toBottomOf="@id/chip_scroll_camera"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:contentDescription="@string/iconPlaceholder" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-</ScrollView>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

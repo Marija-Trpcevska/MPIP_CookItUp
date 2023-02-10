@@ -7,7 +7,6 @@ import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import finki.ukim.mk.cookitup.databinding.ActivityMainBinding
@@ -21,7 +20,8 @@ class MainActivity : AppCompatActivity() {
             R.id.navigation_home,
             R.id.navigation_search,
             R.id.navigation_add,
-            R.id.navigation_login
+            R.id.navigation_login,
+            R.id.navigation_backup
         )
     )
 
@@ -35,9 +35,9 @@ class MainActivity : AppCompatActivity() {
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        setupActionBarWithNavController(navController, appBarConfiguration)
+//        setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-        NavigationUI.setupActionBarWithNavController(this, navController)
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
 
         navController.addOnDestinationChangedListener { _, destination: NavDestination, _: Bundle? ->
             binding.navView.isVisible =

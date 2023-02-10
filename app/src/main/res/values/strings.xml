@@ -15,7 +15,7 @@
     <string name="btn_save">Save</string>
     <string name="written_dialog_title">Create a recipe</string>
     <string name="fullscreen_dialog_save">Save</string>
-    <string name="recipe_written_title">Title</string>
+    <string name="recipe_written_title">Title:</string>
     <string name="recipe_written_image">Choose an image:</string>
     <string name="recipe_written_ingredients">Add ingredients:</string>
     <string name="recipe_written_instructions">Instructions</string>
@@ -23,21 +23,23 @@
     <string name="recipe_written_mealtype">Choose category:</string>
     <string name="cancel">Cancel</string>
     <string name="title_written">Create your recipe</string>
-    <string name="title_camera">Upload your recipe</string>
+    <string name="title_camera">Take a photo of your recipe</string>
     <string name="chip_breakfast">breakfast</string>
     <string name="chip_brunch">brunch</string>
     <string name="chip_lunch">lunch/dinner</string>
     <string name="chip_snack">snack</string>
     <string name="chip_teatime">teatime</string>
     <string name="fab_add">Add</string>
-    <string name="recipe_photo_notes">Notes</string>
+    <string name="recipe_photo_notes">Notes:</string>
     <string name="source">Source:</string>
     <string name="ingredients">Ingredients</string>
     <string name="recipe_camera_notes_label">Notes:</string>
     <string name="recipe_removed_snackbar">Recipe removed from your collection</string>
     <string name="recipe_restored_snackbar">Recipe restored to your collection</string>
     <string name="recipe_undo_snackbar">Undo</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_backup">Backup</string>
+    <string name="title_backup">Back up</string>
+    <string name="login_prompt">Seems like you are not signed in.\nPlease do so using your preferred method:</string>
+    <string name="profile_backup">Back Up</string>
+    <string name="profile_logout_button">Sign Out</string>
+    <string name="recipe_camera_add_prompt">Take a photo:</string>
 </resources>

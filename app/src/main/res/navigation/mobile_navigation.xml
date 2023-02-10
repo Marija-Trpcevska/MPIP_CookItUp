@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_home"
+    >
 
     <fragment
         android:id="@+id/navigation_home"
@@ -77,13 +78,24 @@
         android:label="Back up your recipes"
         tools:layout="@layout/fragment_login"
         >
+        <action
+            android:id="@+id/from_navigation_login_to_navigation_backup"
+            app:destination="@id/navigation_backup"
+            />
     </fragment>
 
     <fragment
         android:id="@+id/navigation_backup"
         android:name="finki.ukim.mk.cookitup.ui.login.BackupFragment"
         android:label="Back up your recipes"
-        tools:layout="@layout/fragment_backup"
-        >
+        tools:layout="@layout/fragment_backup">
+        <action
+            android:id="@+id/from_navigation_backup_to_navigation_login"
+            app:destination="@id/navigation_login"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popUpTo='@id/mobile_navigation'
+            app:popUpToInclusive="true"
+        />
     </fragment>
 </navigation>

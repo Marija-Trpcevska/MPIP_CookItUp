@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_marginBottom="?android:attr/actionBarSize"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.home.HomeFragment"
+    android:background="@color/background_color"
+    >
 
 <com.google.android.material.tabs.TabLayout
     android:id="@+id/tab_layout"
@@ -18,9 +20,12 @@
     app:tabMode="fixed"
     app:tabIndicatorGravity="stretch"
     app:tabIndicatorAnimationMode="elastic"
-    app:tabSelectedTextColor="@color/white"
+    app:tabSelectedTextColor="@color/element_black"
+    app:tabTextColor="@color/color_on_secondary"
     app:tabIndicatorColor="@null"
     app:tabIndicator="@drawable/tab_indicator"
+    app:tabTextAppearance="@style/TabFont"
+    android:background="@color/background_color"
     />
 
     <androidx.viewpager2.widget.ViewPager2
@@ -32,6 +37,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:flow_horizontalBias="0.5"
+        android:layout_marginTop="10dp"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

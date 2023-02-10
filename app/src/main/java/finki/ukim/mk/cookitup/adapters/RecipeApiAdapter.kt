@@ -1,8 +1,5 @@
 package finki.ukim.mk.cookitup.adapters
 
-import android.animation.LayoutTransition
-import android.transition.AutoTransition
-import android.transition.TransitionManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,7 +46,6 @@ class RecipeApiAdapter(private val data: ArrayList<RecipeApi> = ArrayList(), var
         }
 
         fun bind(recipe:RecipeApi) {
-            layout.layoutTransition.enableTransitionType(LayoutTransition.CHANGING)
             recipeTitle.text = recipe.label
             Glide.with(recipeImage)
                 .load(recipe.image)
@@ -74,7 +70,7 @@ class RecipeApiAdapter(private val data: ArrayList<RecipeApi> = ArrayList(), var
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.recipe_api_item_view,parent,false)
         val holder = RecipeViewHolder(view)
-        val layout = holder.itemView.findViewById<ConstraintLayout>(R.id.layout_api)
+        holder.itemView.findViewById<ConstraintLayout>(R.id.layout_api)
         val divider=  holder.itemView.findViewById<View>(R.id.recipe_divider)
         val ingredients =  holder.itemView.findViewById<RecyclerView>(R.id.recipe_ingredient_lines)
         val chips = holder.itemView.findViewById<HorizontalScrollView>(R.id.scroll_chip)
@@ -82,10 +78,7 @@ class RecipeApiAdapter(private val data: ArrayList<RecipeApi> = ArrayList(), var
         val url = holder.itemView.findViewById<LinearLayout>(R.id.recipe_source_url_layout)
         val fab = holder.itemView.findViewById<FloatingActionButton>(R.id.api_fab)
 
-        layout.layoutTransition.setAnimateParentHierarchy(false)
         holder.itemView.findViewById<CardView>(R.id.card_api).setOnClickListener{
-
-            TransitionManager.beginDelayedTransition(layout, AutoTransition())
 
             val visible = if(divider.visibility == View.GONE) View.VISIBLE else View.GONE
             divider.visibility = visible

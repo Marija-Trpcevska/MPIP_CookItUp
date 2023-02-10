@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "171015402455",
+    "project_id": "cookitup-a8caa",
+    "storage_bucket": "cookitup-a8caa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:171015402455:android:b9ca7761b1e5e261675192",
+        "android_client_info": {
+          "package_name": "finki.ukim.mk.cookitup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "171015402455-0c6uk581lvfoqe63fr6nur5fcpdjeg65.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "finki.ukim.mk.cookitup",
+            "certificate_hash": "b63909775741a80b95b955bbb819cc007829eec3"
+          }
+        },
+        {
+          "client_id": "171015402455-94mk0nqo1unisvhu2mucfpjpggulndjs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4JYm4QKfyLD0gB-Dq0FsFV65vUQchXmc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "171015402455-94mk0nqo1unisvhu2mucfpjpggulndjs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

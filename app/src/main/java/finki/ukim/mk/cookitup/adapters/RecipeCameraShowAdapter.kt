@@ -1,8 +1,5 @@
 package finki.ukim.mk.cookitup.adapters
 
-import android.animation.LayoutTransition
-import android.transition.AutoTransition
-import android.transition.TransitionManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -45,7 +42,6 @@ class RecipeCameraShowAdapter(private val data: ArrayList<RecipeCamera> = ArrayL
         }
 
         fun bind(recipe: RecipeCamera) {
-            layout.layoutTransition.enableTransitionType(LayoutTransition.CHANGING)
             recipeTitle.text = recipe.label
             recipeImage.load(recipe.image){
                 placeholder(R.drawable.ic_baseline_image_not_supported_24)
@@ -67,26 +63,21 @@ class RecipeCameraShowAdapter(private val data: ArrayList<RecipeCamera> = ArrayL
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeCameraShowViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.recipe_camera_item_added,parent,false)
         val holder = RecipeCameraShowViewHolder(view)
-        val layout = holder.itemView.findViewById<ConstraintLayout>(R.id.layout_camera_added)
+        holder.itemView.findViewById<ConstraintLayout>(R.id.layout_camera_added)
         val divider=  holder.itemView.findViewById<View>(R.id.recipe_divider_camera_added)
         val chips = holder.itemView.findViewById<HorizontalScrollView>(R.id.scroll_chip_camera_added)
         val notes = holder.itemView.findViewById<LinearLayout>(R.id.recipe_notes_camera_box_added)
         val fab = holder.itemView.findViewById<FloatingActionButton>(R.id.api_fab_camera_added)
 
-        layout.layoutTransition.setAnimateParentHierarchy(false)
         holder.itemView.findViewById<CardView>(R.id.card_camera_added).setOnClickListener{
-
-            TransitionManager.beginDelayedTransition(layout, AutoTransition())
 
             val visible = if(divider.visibility == View.GONE) View.VISIBLE else View.GONE
             divider.visibility = visible
             chips.visibility = visible
             notes.visibility = visible
             fab.visibility = visible
-
         }
         fab.setOnClickListener{
-            TransitionManager.beginDelayedTransition(layout, AutoTransition())
 
             val visible = if(divider.visibility == View.GONE) View.VISIBLE else View.GONE
             divider.visibility = visible

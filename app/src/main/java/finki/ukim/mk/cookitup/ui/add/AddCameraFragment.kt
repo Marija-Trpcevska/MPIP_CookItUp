@@ -12,11 +12,13 @@ import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.google.android.material.chip.Chip
@@ -26,6 +28,7 @@ import finki.ukim.mk.cookitup.databinding.FragmentCameraAddBinding
 import finki.ukim.mk.cookitup.domain.add.model.RecipeCamera
 import finki.ukim.mk.cookitup.ui.home.ShowCameraViewModel
 import finki.ukim.mk.cookitup.ui.home.ShowCameraViewModelFactory
+import io.github.muddz.styleabletoast.StyleableToast
 import java.io.File
 import java.io.IOException
 
@@ -81,7 +84,7 @@ class AddCameraFragment: Fragment() {
         if (!mainFile.exists()) try {
             mainFile.createNewFile()
         } catch (e: IOException) {
-            Toast.makeText(context, "There was a problem with saving the photo...",Toast.LENGTH_SHORT).show()
+            StyleableToast.makeText(requireContext(), "There was a problem with saving the photo...",Toast.LENGTH_SHORT, R.style.Toast).show()
             e.printStackTrace()
         }
         val imageUri = FileProvider.getUriForFile(
@@ -98,8 +101,9 @@ class AddCameraFragment: Fragment() {
             if (isGranted) {
                 chooseFromCamera()
                 }
-            else
-                Toast.makeText(context, "Camera permission denied", Toast.LENGTH_SHORT).show()
+            else{
+                StyleableToast.makeText(requireContext(), "Camera permission denied", Toast.LENGTH_SHORT, R.style.Toast).show()
+            }
         }
 
     private fun checkCameraPermission(){
@@ -123,16 +127,17 @@ class AddCameraFragment: Fragment() {
                         + '/' + requireContext().resources.getResourceTypeName(R.drawable.ic_baseline_image_not_supported_24)
                         + '/' + requireContext().resources.getResourceEntryName(R.drawable.ic_baseline_image_not_supported_24) )
         binding.showPhoto.tag = noImage
-        return binding.root
-    }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         binding.cameraTaker.setOnClickListener{
             val filename = System.currentTimeMillis().toString() + ".jpg"
             mainFile = File(requireContext().filesDir, filename)
             checkCameraPermission()
         }
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding.photoFab.setOnClickListener{
             if(binding.cameraTitle.text.isEmpty() || binding.showPhoto.tag.equals(noImage)){
                 if(binding.cameraTitle.text.isEmpty()){binding.cameraTitle.error = "Recipe title is required"}
@@ -149,6 +154,8 @@ class AddCameraFragment: Fragment() {
                 )
                 showCameraViewModel.addRecipe(recipe)
                 val snack = Snackbar.make(binding.recipeCameraLayout, "Recipe added to your collection",Snackbar.LENGTH_SHORT)
+                val font = ResourcesCompat.getFont(requireContext(), R.font.comfortaa)
+                snack.view.findViewById<TextView>(com.google.android.material.R.id.snackbar_text).typeface = font
                 snack.show()
             }
         }

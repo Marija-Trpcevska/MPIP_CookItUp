@@ -17,13 +17,12 @@
         android:id="@+id/layout_written_added"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:animateLayoutChanges="true"
         >
 
         <ImageView android:id="@+id/recipe_image_written_added"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginVertical="10dp"
             android:scaleType="centerCrop"
             app:layout_constraintDimensionRatio="1:0.5"
             app:layout_constraintWidth_percent=".923"
@@ -45,12 +44,15 @@
             android:layout_marginStart="14dp"
             android:layout_marginEnd="13dp"
             android:paddingTop="2dp"
+            android:fontFamily="@font/amatic_sc_bold"
+            android:textSize="24sp"
+            android:gravity="center"
             />
 
         <View
             android:id="@+id/recipe_divider_written_added"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="4dp"
             android:background="@android:color/darker_gray"
             android:layout_marginStart="14dp"
             android:layout_marginEnd="13dp"
@@ -58,6 +60,7 @@
             app:layout_constraintTop_toBottomOf="@id/recipe_title_written_added"
             app:layout_constraintBottom_toTopOf="@id/recipe_ingredient_lines_written_added"
             android:visibility="gone"
+            android:backgroundTint="@color/color_primary"
             />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -68,6 +71,7 @@
             app:layout_constraintBottom_toTopOf="@id/scroll_chip_written_added"
             android:layout_marginStart="14dp"
             android:layout_marginEnd="13dp"
+            android:layout_marginBottom="3dp"
             android:paddingTop="2dp"
             tools:text="@string/ingredients"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
@@ -93,7 +97,8 @@
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_breakfast_3_written_added"
-                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    style="@style/ChipStyle"
+                    android:textAppearance="@style/ChipText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/chip_breakfast"
@@ -102,7 +107,8 @@
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_brunch_3_written_added"
-                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    style="@style/ChipStyle"
+                    android:textAppearance="@style/ChipText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/chip_brunch"
@@ -111,7 +117,8 @@
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_lunch_3_written_added"
-                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    style="@style/ChipStyle"
+                    android:textAppearance="@style/ChipText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/chip_lunch"
@@ -120,7 +127,8 @@
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_snack_3_written_added"
-                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    style="@style/ChipStyle"
+                    android:textAppearance="@style/ChipText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/chip_snack"
@@ -130,7 +138,8 @@
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_teatime_written_added"
-                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    style="@style/ChipStyle"
+                    android:textAppearance="@style/ChipText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/chip_teatime"
@@ -159,6 +168,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/recipe_written_instructions_2"
                 app:layout_constraintBottom_toTopOf="@id/recipe_instructions_written_added"
+                android:textSize="15sp"
+                android:fontFamily="@font/comfortaa"
                 />
 
             <TextView
@@ -167,6 +178,8 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/recipe_instructions_label_written_added"
                 app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="15sp"
+                android:fontFamily="@font/comfortaa"
                 />
 
         </LinearLayout>

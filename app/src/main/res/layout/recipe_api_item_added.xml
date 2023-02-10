@@ -17,13 +17,12 @@
         android:id="@+id/layout_api_added"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:animateLayoutChanges="true"
         >
 
         <ImageView android:id="@+id/recipe_image_added"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginVertical="10dp"
             android:scaleType="centerCrop"
             app:layout_constraintDimensionRatio="1:0.5"
             app:layout_constraintWidth_percent=".923"
@@ -45,12 +44,15 @@
             android:layout_marginStart="14dp"
             android:layout_marginEnd="13dp"
             android:paddingTop="2dp"
+            android:fontFamily="@font/amatic_sc_bold"
+            android:textSize="24sp"
+            android:gravity="center"
             />
 
         <View
             android:id="@+id/recipe_divider_added"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="4dp"
             android:background="@android:color/darker_gray"
             android:layout_marginStart="14dp"
             android:layout_marginEnd="13dp"
@@ -58,6 +60,7 @@
             app:layout_constraintTop_toBottomOf="@id/recipe_title_added"
             app:layout_constraintBottom_toTopOf="@id/recipe_ingredient_lines_added"
             android:visibility="gone"
+            android:backgroundTint="@color/color_primary"
             />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -83,6 +86,7 @@
             app:layout_constraintTop_toBottomOf="@id/recipe_ingredient_lines_added"
             android:layout_marginStart="14dp"
             android:layout_marginEnd="13dp"
+            android:layout_marginBottom="3dp"
             android:visibility="gone">
 
             <com.google.android.material.chip.ChipGroup
@@ -93,7 +97,8 @@
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_breakfast_3_added"
-                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    style="@style/ChipStyle"
+                    android:textAppearance="@style/ChipText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/chip_breakfast"
@@ -102,7 +107,8 @@
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_brunch_3_added"
-                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    style="@style/ChipStyle"
+                    android:textAppearance="@style/ChipText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/chip_brunch"
@@ -111,7 +117,8 @@
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_lunch_3_added"
-                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    style="@style/ChipStyle"
+                    android:textAppearance="@style/ChipText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/chip_lunch"
@@ -120,7 +127,8 @@
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_snack_3_added"
-                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    style="@style/ChipStyle"
+                    android:textAppearance="@style/ChipText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/chip_snack"
@@ -130,7 +138,8 @@
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_teatime_3_added"
-                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    style="@style/ChipStyle"
+                    android:textAppearance="@style/ChipText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/chip_teatime"
@@ -147,6 +156,7 @@
             android:orientation="horizontal"
             android:layout_marginStart="14dp"
             android:layout_marginEnd="13dp"
+            android:layout_marginBottom="3dp"
             android:paddingTop="2dp"
             app:layout_constraintTop_toBottomOf="@id/scroll_chip_added"
             app:layout_constraintBottom_toTopOf="@+id/recipe_source_url_layout_added"
@@ -161,6 +171,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/recipe_source_added"
                 android:layout_marginEnd="4dp"
+                android:textSize="15sp"
+                android:fontFamily="@font/comfortaa"
                 />
 
             <TextView
@@ -169,6 +181,8 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toEndOf="@id/recipe_source_label_added"
                 app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="15sp"
+                android:fontFamily="@font/comfortaa"
                 />
 
         </LinearLayout>
@@ -187,8 +201,8 @@
 
             <ImageView
                 android:id="@+id/recipe_url_label_added"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
                 android:layout_marginEnd="4dp"
                 android:contentDescription="@string/iconPlaceholder"
                 android:src="@drawable/ic_baseline_link_24"
@@ -206,6 +220,7 @@
                 app:layout_constraintStart_toEndOf="@id/recipe_url_label_added"
                 android:layout_weight="1"
                 android:autoLink="web"
+                android:textColorLink="@color/color_primary"
                 />
         </LinearLayout>
 
@@ -222,6 +237,7 @@
             app:layout_constraintTop_toBottomOf="@id/recipe_source_url_layout_added"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:contentDescription="@string/iconPlaceholder" />
+            android:contentDescription="@string/iconPlaceholder"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
